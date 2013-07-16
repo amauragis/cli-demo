@@ -1,23 +1,29 @@
-# Object files
+# Object files #
+################
 *.o
 
-# Libraries
+# Libraries #
+#############
 *.lib
 *.a
 
-# Shared objects (inc. Windows DLLs)
+# Shared objects (inc. Windows DLLs) #
+######################################
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
+# Executables #
+###############
 *.exe
 *.out
 *.app
 
-# Sublime Text Crap
+# Sublime Text Crap #
+#####################
 *.sublime-project
+*.sublime-workspace
 
 # OS generated files #
 ######################
@@ -41,4 +47,3 @@ Thumbs.db
 *.rar
 *.tar
 *.zip
-cli-demo.sublime-workspace

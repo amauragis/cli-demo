@@ -1,16 +1,65 @@
-// This file provides sample functions to call using our yacc grammars as a proof of concept
-
-#include <stdio.h>
-
-
-void testA(){
-    printf("Test A!\n");
+/*
+ * funtions.c
+ * Implementation of functions used to build the syntax tree.
+ */
+ 
+#include "functions.h"
+ #include <stdlib.h>
+ 
+/**
+ * @brief Allocates space for expression
+ * @return The expression or NULL if not enough memory
+ */
+static SExpression* allocateExpression()
+{
+    SExpression* b = (SExpression*)malloc(sizeof *b);
+ 
+    if (b == NULL)
+        return NULL;
+ 
+    b->type = eVALUE;
+    b->value = 0;
+ 
+    b->left = NULL;
+    b->right = NULL;
+ 
+    return b;
 }
-
-void testB(int n){
-    printf("Test B\n N was: %i\n", n);
+ 
+SExpression* createNumber(int value)
+{
+    SExpression* b = allocateExpression();
+ 
+    if (b == NULL)
+        return NULL;
+ 
+    b->type = eVALUE;
+    b->value = value;
+ 
+    return b;
 }
-
-void testC(char* s){
-    printf("Test C\n String was \"%s\"\n",s);
+ 
+SExpression* createOperation(EOperationType type, SExpression* left, SExpression* right)
+{
+    SExpression* b = allocateExpression();
+ 
+    if (b == NULL)
+        return NULL;
+ 
+    b->type = type;
+    b->left = left;
+    b->right = right;
+ 
+    return b;
+}
+ 
+void deleteExpression(SExpression* b)
+{
+    if (b == NULL)
+        return;
+ 
+    deleteExpression(b->left);
+    deleteExpression(b->right);
+ 
+    free(b);
 }
