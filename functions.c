@@ -1,10 +1,10 @@
 /*
- * funtions.c
+ * functions.c
  * Implementation of functions used to build the syntax tree.
  */
  
 #include "functions.h"
- #include <stdlib.h>
+#include <stdlib.h>
  
 /**
  * @brief Allocates space for expression
